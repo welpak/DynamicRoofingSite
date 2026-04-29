@@ -54,10 +54,10 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="hidden md:block relative"
         >
-          <div className="relative z-10 w-full aspect-[4/5] rounded-[3rem] overflow-hidden gold-border bg-white rotate-2 transition-transform hover:rotate-0 duration-700 cursor-pointer group shadow-2xl shadow-black/10">
+          <div className="relative z-10 w-full aspect-[4/5] rounded-[3rem] overflow-hidden gold-border bg-white rotate-2 transition-transform hover:rotate-0 duration-700 cursor-pointer group shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
             {/* Using the uploaded high-quality image of the neighborhood */}
             <img 
-              src="/input_file_0.png" 
+              src="https://dynamic-roofing-nc.com/media/photo/roof7_2.jpg" 
               alt="Luxury Neighborhood Project" 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               referrerPolicy="no-referrer"

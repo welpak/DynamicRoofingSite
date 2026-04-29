@@ -7,15 +7,15 @@ const services = [
     id: 'roofing',
     title: 'Roofing Excellence',
     description: 'Expert residential roofing installation, master-grade repairs, and precision storm damage remediation. We use only the finest architectural shingles.',
-    icon: <Shield size={32} className="text-gold" />,
-    image: 'https://images.unsplash.com/photo-1635831968430-8456a004bd57?auto=format&fit=crop&q=80&w=800',
+    icon: Shield,
+    image: 'https://dynamic-roofing-nc.com/media/photo/mroof1_2.webp?auto=format&fit=crop&q=80&w=800',
     color: 'bg-gold/10'
   },
   {
     id: 'siding',
     title: 'Modern Siding',
     description: 'Elevate your curb appeal with premium siding. From vinyl to high-performance fiber cement, we provide protection that lasts a lifetime.',
-    icon: <Hammer size={32} className="text-gold" />,
+    icon: Hammer,
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
     color: 'bg-blue-500/10'
   },
@@ -23,8 +23,8 @@ const services = [
     id: 'gutters',
     title: 'Precision Gutters',
     description: 'Seamless gutter systems and advanced protection. Engineered to shield your foundation and landscaping from North Carolina storm water.',
-    icon: <Droplets size={32} className="text-gold" />,
-    image: 'https://images.unsplash.com/photo-1621255866179-8f0a0d922904?auto=format&fit=crop&q=80&w=800',
+    icon: Droplets,
+    image: 'https://dynamic-roofing-nc.com/media/photo/Gutters_2.webp?auto=format&fit=crop&q=80&w=800',
     color: 'bg-green-500/10'
   }
 ];
@@ -52,38 +52,101 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative h-[500px] rounded-[3rem] overflow-hidden bg-gray-50 border border-black/5 cursor-pointer shadow-xl shadow-black/[0.03] hover:shadow-2xl hover:shadow-black/[0.08] transition-all duration-500"
-            >
-              <img 
-                src={service.image} 
-                alt={service.title} 
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent p-10 flex flex-col justify-end">
-                <div className="mb-6 w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center shadow-lg shadow-black/[0.05] group-hover:bg-gold transition-colors">
-                  <div className="group-hover:text-white transition-colors">
-                    {service.icon}
-                  </div>
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3, margin: "-25% 0px -25% 0px" }}
+                className="relative h-[500px] rounded-[3rem] overflow-hidden bg-zinc-900 shadow-xl shadow-black/[0.03]"
+              >
+                <motion.img 
+                  src={service.image} 
+                  alt={service.title} 
+                  variants={{
+                    hidden: { filter: 'grayscale(100%)', scale: 1 },
+                    visible: { filter: 'grayscale(0%)', scale: 1.05, transition: { duration: 0.7, ease: "easeOut" } }
+                  }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                
+                {/* Granite Gray Frosted Overlay */}
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0.9, backdropFilter: 'blur(10px)' },
+                    visible: { opacity: 0.2, backdropFilter: 'blur(2px)', transition: { duration: 0.7, ease: "easeOut" } }
+                  }}
+                  className="absolute inset-0 bg-stone-800"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/80 to-transparent p-10 flex flex-col justify-end pointer-events-none z-10" />
+
+                <div className="absolute inset-0 p-10 flex flex-col justify-end z-20">
+                  <motion.div 
+                    variants={{
+                      hidden: { backgroundColor: '#ffffff' },
+                      visible: { backgroundColor: '#E5C158', transition: { duration: 0.5 } }
+                    }}
+                    className="mb-6 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-black/[0.05]"
+                  >
+                    <motion.div
+                      variants={{
+                        hidden: { color: '#E5C158' },
+                        visible: { color: '#4a4a4a', transition: { duration: 0.5 } } // granite gray
+                      }}
+                    >
+                      <Icon size={32} />
+                    </motion.div>
+                  </motion.div>
+                  
+                  <motion.h3 
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    }}
+                    className="text-3xl font-display font-medium mb-4 text-white"
+                  >
+                    {service.title}
+                  </motion.h3>
+                  
+                  <motion.p 
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } }
+                    }}
+                    className="text-stone-300 leading-relaxed"
+                  >
+                    {service.description}
+                  </motion.p>
+                  
+                  <motion.a 
+                    href={`#${service.id}`}
+                    className="mt-8 flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-widest overflow-hidden hover:text-white transition-colors"
+                  >
+                    <motion.span 
+                      variants={{
+                        hidden: { x: '-100%' },
+                        visible: { x: '0%', transition: { duration: 0.5, delay: 0.2 } }
+                      }}
+                    >
+                      Explore Service
+                    </motion.span>
+                    <motion.div 
+                      variants={{
+                        hidden: { x: '-150%' },
+                        visible: { x: '0%', transition: { duration: 0.5, delay: 0.2 } }
+                      }}
+                    >
+                      <ArrowUpRight size={18} />
+                    </motion.div>
+                  </motion.a>
                 </div>
-                <h3 className="text-3xl font-display font-medium mb-4 text-text-main">{service.title}</h3>
-                <p className="text-text-muted leading-relaxed translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  {service.description}
-                </p>
-                <div className="mt-8 flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-widest overflow-hidden">
-                  <span className="translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500">Explore Service</span>
-                  <ArrowUpRight size={18} className="translate-x-[-150%] group-hover:translate-x-0 transition-transform duration-500" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

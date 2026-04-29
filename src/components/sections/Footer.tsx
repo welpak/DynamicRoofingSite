@@ -4,11 +4,14 @@ import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 pt-24 pb-12 px-6 border-t border-black/5">
+    <footer className="bg-gold/10 pt-24 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-1">
-            <a href="/" className="flex items-center gap-2 mb-6">
+            <a href="/" className="flex items-center gap-2 mb-6 group">
+              <div className="w-10 h-10 flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
+                <img src="https://dynamic-roofing-nc.com/media/photo/dr.png" alt="Dynamic Roofing Logo" className="w-full h-full object-contain drop-shadow-md grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all rounded-xl" />
+              </div>
               <span className="text-2xl font-display font-bold block leading-none tracking-tight underline decoration-gold underline-offset-8 text-text-main">DYNAMIC</span>
             </a>
             <p className="text-text-muted mb-8 leading-relaxed font-light">

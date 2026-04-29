@@ -5,7 +5,7 @@ import { CheckCircle2 } from 'lucide-react';
 export default function CTA() {
   return (
     <section className="py-24 px-6 relative overflow-hidden" id="contact">
-      <div className="absolute inset-0 bg-gold/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-gold/10" />
       
       <div className="max-w-5xl mx-auto glass-card p-12 md:p-20 relative z-10 text-center shadow-2xl shadow-black/5">
         <motion.div

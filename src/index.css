@@ -22,9 +22,10 @@
 }
 
 .gold-gradient {
-  background: linear-gradient(45deg, #E5C158, #FFF1BD, #C5A028);
+  background: linear-gradient(45deg, #E2B446, #F5CE56, #C59419);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2)) drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 .gold-border {
